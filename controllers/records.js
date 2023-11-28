@@ -26,7 +26,6 @@ const getUserData = (request, response) => {
 const saveData = (request, response) => {
   const { name, points } = request.body
   const date = new Date()
-  console.log(`Date ${date}`)
 
   pool.query(
     'INSERT INTO records (name, points) VALUES ($1, $2) RETURNING *',

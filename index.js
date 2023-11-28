@@ -24,8 +24,16 @@ module.exports = {pool}
 app.get('/', (req, res) => {
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+
+  pool.query('SELECT 1 + 1 AS solution', (error, results, fields) => {
+    if (error) {
+      throw error
+    }
+    
+    response.status(200).json(results[0].solution)
+  });
   
-  return res.json({ info: 'API is working correctly' })
+  //return res.json({ info: 'API is working correctly' })
 })
 
 load('controllers')
