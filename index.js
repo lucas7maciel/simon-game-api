@@ -2,10 +2,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const load = require('express-load')
-const app = express();
-const port = 3000;
+const Pool = require('pg').Pool
 
-const qr = require('./queries');
+const app = express();
+const port = process.env.port
 
 app.use(bodyParser.json());
 app.use(
@@ -14,20 +14,19 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => res.json(
-  { info: 'API is working correctly' })//
-)
-
-const Pool = require('pg').Pool;
 const pool = new Pool({
-  user: 'me',
-  host: 'localhost',
-  database: 'api',
-  password: 'me1234',
-  port: 5432
+  user: process.env.user,
+  host: process.env.host,
+  database: process.env.dbName,
+  password: process.env.password,
+  port: process.env.dbPort
 })
 
 module.exports = {pool}
+
+app.get('/', (req, res) => res.json(
+  { info: 'API is working correctly' })
+)
 
 load('controllers')
 .then('routes')
