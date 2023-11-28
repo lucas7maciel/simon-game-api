@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const load = require('express-load')
 const Pool = require('pg').Pool
+require('dotenv').config()
 
 const app = express();
 const port = process.env.port
