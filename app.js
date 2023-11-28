@@ -16,11 +16,7 @@ app.use(
 );
 
 const pool = new Pool({
-  user: process.env.user,
-  host: process.env.host,
-  database: process.env.dbName,
-  password: process.env.password,
-  port: process.env.dbPort
+  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
 })
 
 module.exports = {pool}
