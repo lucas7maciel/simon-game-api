@@ -2,7 +2,7 @@
 module.exports = (app) => ({ signIn, signUp })
 
 const cryptoJS = require('crypto-js')
-const {pool} = require("../app.js")
+const {pool} = require("../index.js")
 
 async function signUp(req, res) {
   const { nick, password } = req.body
