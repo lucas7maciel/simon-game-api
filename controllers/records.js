@@ -1,7 +1,7 @@
 
 module.exports = (app) => ({ getData, getUserData, saveData })
 
-const {pool} = require("../index.js")
+const {pool} = require("../app.js")
 
 const getData = (request, response) => {
   pool.query('SELECT * FROM records ORDER BY points DESC', (error, results) => {
