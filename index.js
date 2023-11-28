@@ -21,9 +21,12 @@ const pool = new Pool({
 
 module.exports = {pool}
 
-app.get('/', (req, res) => res.json(
-  { info: 'API is working correctly' })
-)
+app.get('/', (req, res) => {
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+  
+  return res.json({ info: 'API is working correctly' })
+})
 
 load('controllers')
 .then('routes')
