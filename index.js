@@ -32,7 +32,6 @@ load('controllers')
 .then('routes')
 .into(app)
 
-const rs = app.controllers.records
 app.get("/teste", (request, res) => {
   pool.query('SELECT * FROM records ORDER BY points DESC', (error, results) => {
     if (error) {
