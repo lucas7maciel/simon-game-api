@@ -1,5 +1,5 @@
 module.exports = (app) => {
-  const route = app.controllers.records
+  const route = app.public.controllers.records
 
   app.get('/records', route.getData);
   app.get('/records/:name', route.getUserData);

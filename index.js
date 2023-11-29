@@ -28,8 +28,8 @@ app.get('/', (req, res) => {
   return res.json({ info: 'API is working correctly' })
 })
 
-load('controllers')
-.then('routes')
+load('public/controllers')
+.then('public/routes')
 .into(app)
 
 app.get("/teste", (request, res) => {
