@@ -28,6 +28,8 @@ app.get('/', (req, res) => {
   return res.json({ info: 'API is working correctly' })
 })
 
+app.get('/teste', app.controllers.records.getData);
+
 load('controllers')
 .then('routes')
 .into(app)
