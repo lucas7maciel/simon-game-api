@@ -32,7 +32,8 @@ load('controllers')
 .then('routes')
 .into(app)
 
-app.get("/teste", app.controllers.records.getData)
+const rs = app.controllers.records
+app.get("/teste", rs.getData)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
