@@ -33,7 +33,7 @@ load('public/controllers')
 .then('public/routes')
 .into(app)
 
-app.get("/teste", (request, res) => {
+app.get("/teste/teste", (request, res) => {
   pool.query('SELECT * FROM records ORDER BY points DESC', (error, results) => {
     if (error) {
       throw error;

@@ -1,7 +1,7 @@
 module.exports = (app) => {
-  const route = app.public.controllers.records
+  const funcs = app.public.controllers.records
 
-  app.get('/records', route.getData);
-  app.get('/records/:name', route.getUserData);
-  app.post('/records/save', route.saveData);
+  app.get('/records', funcs.getData);
+  app.get('/records/:name', funcs.getUserData);
+  app.post('/records/save', funcs.saveData);
 }
