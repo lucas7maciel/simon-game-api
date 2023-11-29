@@ -28,11 +28,11 @@ app.get('/', (req, res) => {
   return res.json({ info: 'API is working correctly' })
 })
 
-app.get('/teste', app.controllers.records.getData);
-
 load('controllers')
 .then('routes')
 .into(app)
+
+app.get("/teste", app.controllers.records.getData)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
