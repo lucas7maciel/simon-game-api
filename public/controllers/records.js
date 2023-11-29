@@ -1,6 +1,4 @@
 
-module.exports = (app) => ({ getData, getUserData, saveData })
-
 const {pool} = require("../../index.js")
 
 const getData = (req, res) => {
@@ -39,3 +37,5 @@ const saveData = (request, response) => {
     }
   );
 };
+
+module.exports = /*(app) => (*/{ getData, getUserData, saveData }//)

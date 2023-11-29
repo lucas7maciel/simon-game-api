@@ -20,7 +20,7 @@ const pool = new Pool({
   connectionString: process.env.POSTGRES_URL + "?sslmode=require",
 })
 
-module.exports = {pool}
+//module.exports = {pool}
 
 app.get('/', (req, res) => {
   res.setHeader('Content-Type', 'text/html');
@@ -29,9 +29,9 @@ app.get('/', (req, res) => {
   return res.json({ info: 'API is working correctly' })
 })
 
-load('public/controllers')
+/*load('public/controllers')
 .then('public/routes')
-.into(app)
+.into(app)*/
 
 app.get("/teste/teste", (request, res) => {
   pool.query('SELECT * FROM records ORDER BY points DESC', (error, results) => {
@@ -47,4 +47,4 @@ app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
 
-module.exports = app
+module.exports = {app, pool}

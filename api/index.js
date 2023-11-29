@@ -1,7 +1,7 @@
-const app = require("../index")
+const {app} = require("../index")
+const records = require("../public/routes/records")
 
-load('../public/controllers')
-.then('../public/routes')
-.into(app)
+app.use("/", records)
 
 module.exports = app
+
