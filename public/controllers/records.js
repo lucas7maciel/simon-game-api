@@ -3,7 +3,7 @@ module.exports = (app) => ({ getData, getUserData, saveData })
 
 const {pool} = require("../../index.js")
 
-const getData = (request, res) => {
+const getData = (req, res) => {
   pool.query('SELECT * FROM records ORDER BY points DESC', (error, results) => {
     if (error) {
       throw error;
