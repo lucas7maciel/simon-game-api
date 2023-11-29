@@ -8,7 +8,8 @@ require('dotenv').config()
 const app = express();
 const port = process.env.port
 
-app.use(bodyParser.json());
+app.use(bodyParser.json())
+app.use(express.static('public'))
 app.use(
   bodyParser.urlencoded({
     extended: true,
