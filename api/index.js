@@ -1,4 +1,6 @@
 const {app} = require("../index")
+const {pool} = require("../index")
+
 const records = require("../public/routes/records")
 
 //const funcs = require("../public/controllers/records")
@@ -8,5 +10,5 @@ app.get("/teste", (req, res) => {
   return res.json({ info: 'Rota de teste funcionando' })
 })
 
-module.exports = app
+module.exports = {app, pool}
 

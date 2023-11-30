@@ -1,5 +1,5 @@
 
-const {pool} = require("../../index.js")
+const {pool} = require("../../api/index")
 
 const getData = (req, res) => {
   pool.query('SELECT * FROM records ORDER BY points DESC', (error, results) => {
