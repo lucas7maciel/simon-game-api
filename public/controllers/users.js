@@ -1,8 +1,6 @@
 
-module.exports = (app) => ({ signIn, signUp })
-
 const cryptoJS = require('crypto-js')
-const {pool} = require("../../index.js")
+const pool = require("../../api/pool")
 
 async function signUp(req, res) {
   const { nick, password } = req.body
@@ -39,3 +37,5 @@ function signIn(req, res) {
     }
   });
 }
+
+module.exports = /*(app) => (*/{ signIn, signUp }//)

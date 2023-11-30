@@ -1,9 +1,52 @@
-const {app} = require("../index")
-const {pool} = require("../index")
+
+//packages
+const express = require('express');
+const bodyParser = require('body-parser');
+const load = require('express-load')
+const Pool = require('pg').Pool
+require('dotenv').config()
+
+//settings
+const app = express();
+const port = process.env.port
+
+app.use(bodyParser.json())
+app.use(express.static('public'))
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+
+const pool = new Pool({
+  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+})
+
+module.exports = pool
+
+//routes
+app.get('/', (req, res) => {
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+  
+  return res.json({ info: 'API is working correctly' })
+})
 
 const records = require("../public/routes/records")
 
-//const funcs = require("../public/controllers/records")
+app.use("/", records)
+
+app.listen(port, () => {
+  console.log(`App running on port ${port}.`);
+});
+
+module.exports = app
+
+
+/*const {app} = require("../index")
+const {pool} = require("../index")
+
+const records = require("../public/routes/records")
 
 app.use("/", records)
 app.get("/teste", (req, res) => {
@@ -11,4 +54,4 @@ app.get("/teste", (req, res) => {
 })
 
 module.exports = {app, pool}
-
+*/
