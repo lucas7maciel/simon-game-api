@@ -2,8 +2,7 @@
 //packages
 const express = require('express');
 const bodyParser = require('body-parser');
-const load = require('express-load')
-const Pool = require('pg').Pool
+
 require('dotenv').config()
 
 //settings
@@ -18,21 +17,8 @@ app.use(
   })
 );
 
-const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
-})
-
-module.exports = pool
-
 //routes
-app.get('/', (req, res) => {
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-  
-  return res.json({ info: 'API is working correctly' })
-})
-
-const records = require("../public/routes/records")
+const records = require("./routes/records")
 
 app.use("/", records)
 
@@ -41,17 +27,3 @@ app.listen(port, () => {
 });
 
 module.exports = app
-
-
-/*const {app} = require("../index")
-const {pool} = require("../index")
-
-const records = require("../public/routes/records")
-
-app.use("/", records)
-app.get("/teste", (req, res) => {
-  return res.json({ info: 'Rota de teste funcionando' })
-})
-
-module.exports = {app, pool}
-*/
