@@ -22,6 +22,13 @@ const records = require("./routes/records")
 
 app.use("/", records)
 
+app.get('/', (req, res) => {
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+  
+  return res.json({ info: 'API is working correctly' })
+})
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
