@@ -1,3 +1,3 @@
 # simon-game-api
 
-_In production..._
+_Under development..._
